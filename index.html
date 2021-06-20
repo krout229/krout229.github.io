@@ -1,136 +1,183 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>cardSLiding| Home</title>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-       
-        <!-- JQuery-->
-        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-            crossorigin="anonymous"></script>
+<html>
+<title>Sunday Bites</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src="https://kit.fontawesome.com/3b1fe29ded.js" crossorigin="anonymous"></script>
+<style>
+    body {
+        font-family: "Times New Roman", Georgia, Serif;
+    }
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css"
-        integrity="sha512-UTNP5BXLIptsaj5WdKFrkFov94lDx+eBvbKyoe1YAfjeRPC+gT5kyZ10kOHCfNZqEui1sxmqvodNUx3KbuYI/A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: "Playfair Display";
+        letter-spacing: 5px;
+    }
+     .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"
-        integrity="sha512-gY25nC63ddE0LcLPhxUJGFxa2GoIyA5FLym4UJqHDEMHjp8RET6Zn/SHo1sltt3WuVtqfyxECP38/daUc/WVEA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://kit.fontawesome.com/3b1fe29ded.js" crossorigin="anonymous"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-<body>
-    <style>
-        @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-.wrapper{
-  display: grid;
-  height: 100%;
-  text-align: center;
-  
-  place-items: center;
-}
-.wrapper .slider{
-  max-width: 1100px;
-  display: flex;
-  
-}
-.slider .card{
-  flex: 1;
-  margin: 0 10px;
-  background: #fff;
-}
-.slider .card .img{
-  height: 200px;
-  width: 100%;
-}
-.slider .card .img img{
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
-.slider .card .content{
-  padding: 10px 20px;
-}
-.slider .card .content:hover{
-    box-shadow: -1px 4px 28px 0px rgba(0,0,0,0.75);
-}
-.card .content .title{
-  font-size: 25px;
-  font-weight: 600;
-}
-.card .content .sub-title{
-  font-size: 20px;
-  font-weight: 600;
-  color: #e74c3c;
-  line-height: 20px;
-}
-.card .content p{
-  text-align: justify;
-  margin: 10px 0;
-}
-.card .content .btn{
-  display: block;
-  text-align: left;
-  margin: 10px 0;
-}
-.card .content .btn button{
-  background: #e74c3c;
-  color: #fff;
-  border: none;
-  outline: none;
-  font-size: 17px;
-  padding: 5px 8px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-.card .content .btn button:hover{
-  transform: scale(0.9);
-}
-.mySlides {
+        /* The actual timeline (the vertical ruler) */
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: whitesmoke;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        /* Container around content */
+        .container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        /* The circles on the timeline */
+        .container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: whitesmoke;
+            border: 4px solid #FF9F55;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        /* Place the container to the left */
+        .left {
+            left: 0;
+        }
+
+        /* Place the container to the right */
+        .right {
+            left: 50%;
+        }
+
+        /* Add arrows to the left container (pointing right) */
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid whitesmoke;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent white;
+        }
+
+        /* Add arrows to the right container (pointing left) */
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid whitesmoke;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent whitesmoke transparent transparent;
+        }
+
+        /* Fix the circle for containers on the right side */
+        .right::after {
+            left: -16px;
+        }
+
+        /* The actual content */
+        .content {
+            padding: 20px 30px;
+            background-color: whitesmoke;
+            position: relative;
+            border-radius: 6px;
+        }
+
+        /* Media queries - Responsive timeline on screens less than 600px wide */
+        @media screen and (max-width: 600px) {
+
+            /* Place the timelime to the left */
+            .timeline::after {
+                left: 31px;
+            }
+
+            /* Full-width containers */
+            .container {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            /* Make sure that all arrows are pointing leftwards */
+            .container::before {
+                left: 60px;
+                border: medium solid whitesmoke;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent whitesmoke transparent transparent;
+            }
+
+            /* Make sure all circles are at the same spot */
+            .left::after,
+            .right::after {
+                left: 15px;
+            }
+
+            /* Make all right containers behave like the left ones */
+            .right {
+                left: 0%;
+            }
+        }
+        footer i{
+            color: thistle;
+        }
+         footer  p i{
+            color:blue;
+         }
+        .circular--square {
+                width:50px;
+                height: 50px;
+                border-radius: 50%;
+            }
+        
+        .mySlides {
             display: none;
         }
 
         img {
             vertical-align: middle;
         }
-
-        /* Slideshow container */
-        .slideshow-container {
-            max-width: 100vh;
-            position: relative;
+        .active {
+            background-color: whitesmoke;
+        }
+        .fade {
+            -webkit-animation-name: fade;
+            -webkit-animation-duration: 1.5s;
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+         .slideshow-container {
+           
+            
             margin: auto;
             margin-top: 70px;
         }
-
-        /* Caption text */
-        .text {
-            color: #f2f2f2;
-            font-size: 15px;
-            padding: 8px 12px;
-            position: absolute;
-            bottom: 8px;
-            width: 100%;
-            text-align: center;
-        }
-
-        /* Number text (1/3 etc) */
-        .numbertext {
-            color: #f2f2f2;
-            font-size: 12px;
-            padding: 8px 12px;
-            position: absolute;
-            top: 0;
-        }
-
-        /* The dots/bullets/indicators */
         .dot {
             height: 15px;
             width: 15px;
@@ -141,19 +188,7 @@
             transition: background-color 0.6s ease;
         }
 
-        .active {
-            background-color: whitesmoke;
-        }
-
-        /* Fading animation */
-        .fade {
-            -webkit-animation-name: fade;
-            -webkit-animation-duration: 1.5s;
-            animation-name: fade;
-            animation-duration: 1.5s;
-        }
-
-        @-webkit-keyframes fade {
+         @-webkit-keyframes fade {
             from {
                 opacity: .4
             }
@@ -178,256 +213,171 @@
             .text {
                 font-size: 11px
             }
-        } .wrapper {
-            margin: 10px;
-             
         }
-
-        .wrapper .top_navbar {
-            width: calc(100% - 20px);
-            height: 60px;
-            display: flex;
-            position: fixed;
-            top: 10px;
-            z-index: 2;
-        }
-        .wrapper .top_navbar .top_menu {
-            width: calc(100% - 0px);
-            background: black;
-            height: 100%;
-            /*border-top-right-radius: 20px;*/
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-        }
-
-        .wrapper .top_navbar .top_menu .logo {
-            color: #f3c981;
-            font-size: 20px;
-            font-weight: 700;
-            letter-spacing: 3px;
-        }
-
-        .wrapper .top_navbar .top_menu ul {
-            display: flex;
-        }
-        .wrapper .top_navbar .top_menu  i{
-            color:tomato;
-        }
-
-        .wrapper .top_navbar .top_menu ul li a {
-            display: inline-block;
-            margin: 0 10px;
-            margin-top: 20px;
-            width: 35px;
-            height: 35px;
-            line-height: 35px;
-            border: 1px solid #f3c981;
-            text-align: center;
-            border-radius: 50%;
-            color: #ffde59;
-
-        }
-
-        .wrapper .top_navbar .top_menu ul li a:hover {
-            background: #ff914d;
-            color: #fff;
-        }
-
-       
-        .wrapper .main_container {
-                width: calc(100% - 20px);
-                margin-top: 30px;
-                margin-left: 10px;
-                /*padding: 30px;*/
-                transition: all 0.3s ease;
-                
-            }
-
-           .wrapper .main_container .item {
-                background: white;
-                margin-bottom: 10px;
-                padding: 15px;
-                font-size: 14px;
-                line-height: 55px;
-                align-items: center;
-            }
-
-        .wrapper .main_container .item:hover{
-                background-color:white;
-                box-shadow: -1px 4px 28px 0px rgba(0,0,0,0.75);
-                text-decoration: underline;
-            }
-            .circular--square {
-                width:50px;
-                height: 50px;
-                border-radius: 50%;
-            }
-            .wrapper i {
-            color: #ff581a;
-
-        }
-        .wrapper .main_container .item img{
-            position: relative;
-            left: 500px;
-           
-        }
-        footer p {
-            margin-top: 350px;
-            text-align: right;
-            padding: 50px;
-            background-color: #ff581a;
-            color: white;}
 </style>
-<div class="wrapper">
-    <div class="top_navbar">
-        <div class="top_menu">
-            <div class="logo"><img class="circular--square" src="Pictures/logo.png" /> Welcome to Sunaday Bites </div>
-            <ul>
-                <li><a href="#"><i class="far fa-bell"></i></a></li>
-                <li><a href="#"><i class="far fa-comment"></i></a></li>
-    
-    
-            </ul>
+
+<body>
+
+    <!-- Navbar (sit on top) -->
+    <div class="w3-top">
+        <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+            <a href="#home" class="w3-bar-item w3-button"><img class="circular--square" src="Pictures/logo.png" />Sunday Bites</a>
+            <!-- Right-sided navbar links. Hide them on small screens -->
+            <div class="w3-right w3-hide-small">
+                <a href="#about" class="w3-bar-item w3-button">About</a>
+                <a href="#menu" class="w3-bar-item w3-button">Menu</a>
+                <a href="#contact" class="w3-bar-item w3-button">Contact</a>
+            </div>
         </div>
     </div>
-    
-    <div class="slideshow-container ">
-    
-        <div class="mySlides fade">
-            <div class="numbertext">1 / 3</div>
-            <img src="Pictures/Sunday Bites.jpg" style="width:100%">
-            <div class="text"></div>
-        </div>
-    
-        <div class="mySlides fade">
-            <div class="numbertext">2 / 3</div>
-            <img src="Pictures/Sunday Bites-2.jpg" style="width:100%">
-            <div class="text"></div>
-        </div>
-    
-        <div class="mySlides fade">
-            <div class="numbertext">3 / 3</div>
-            <video src="Pictures/Sunday Bites.mp4" style="width:100%" autoplay>
-                <div class="text"></div>
-        </div>
-    
-    </div>
-    <br>
-    
-    <div style="text-align:center">
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-    </div>
-    <h2> An inside look of our menu:</h2>
-    <h3>Curious much?</h3>
-    <div class="slider owl-carousel">
-        <div class="card">
-            <div class="img">
-                <img src="Pictures/Pizza.png" alt="">
-            </div>
-            <div class="content">
-                <div class="title">
-                    Pizza
-                </div><br/>
-               <p>
-                    Cravings for Pizza? Have the finest pizza in town and share it with your friends
-                </p>
-                <div class="btn">
-                 <a href="Menu/2.png"><button>Know more</button></a> 
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="img">
-                <img src="Pictures/Drinks.png" alt="">
-            </div>
-            <div class="content">
-                <div class="title">
-                    Drinks
-                </div><br/>
-               <p>
-                    Thirsty or not, you will fall in love with our cocktails,so why enjoy alone?
-                </p>
-                <div class="btn">
-                <a href="Menu/1.png">   <button>Know more</button></a>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="img">
-                <img src="Pictures/Wings.png" alt="">
-            </div>
-            <div class="content">
-                <div class="title">
-                    Wings
-                </div><br/>
-                
-                <p>
-                    You can not denny the love for chicken wings, maybe you will find your accidental curly fry.
-                </p>
-                <div class="btn">
-                    <button>Know more</button>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="img">
-                <img src="Pictures/Burger.png" alt="">
-            </div>
-            <div class="content">
-                <div class="title">
-                    Wings
-                </div><br />
+
+    <!-- Header -->
+    <header class="w3-display-container w3-content w3-wide" style="max-width:1600px;min-width:500px" id="home">
+        <div class="slideshow-container ">
         
-                <p>
-                    The burger that makes you drool, add on's available if you have any space left.
-                </p>
-                <div class="btn">
-                    <button>Know more</button>
+            <div class="mySlides fade">
+        <img class="w3-image" src="Pictures/Hello Beautiful People.mp4" alt="Hamburger Catering" width="1600" height="800" autoplay>  
+                </div>
+            <div class="mySlides fade">
+        <img class="w3-image" src="Pictures/Bg2.mp4" alt="Hamburger Catering" width="1600" height="800"autoplay>
+            </div>
+            <div class="mySlides fade">
+        <img class="w3-image" src="Pictures/Come one and all.mp4" alt="Hamburger Catering" width="1600" height="800" autoplay>
+            </div>
+        <div class="w3-display-bottomleft w3-padding-large w3-opacity">
+            <h1 class="w3-xxlarge">Sunday Bites</h1>
+        </div>
+        </div>
+        <div style="text-align:center">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </header>
+
+    <!-- Page content -->
+    <div class="w3-content" style="max-width:1100px">
+
+        <!-- About Section -->
+        <div class="w3-row w3-padding-64" id="about">
+            <div class="w3-col m6 w3-padding-large w3-hide-small">
+                <img src="Pictures/Add a heading.png" class="w3-round w3-image w3-opacity-min" alt="Table Setting"
+                    width="600" height="750">
+            </div>
+
+            <div class="w3-col m6 w3-padding-large">
+                <h1 class="w3-center">About Us</h1><br>
+                <h5 class="w3-center">Tradition since 2016</h5>
+                <div class="timeline">
+                    <div class="container left">
+                        <div class="content">
+                            <h2>2020</h2>
+                            <p>We have reopend several stores across the globe.</p>
+                        </div>
+                    </div>
+                    <div class="container right">
+                        <div class="content">
+                            <h2>2018</h2>
+                            <p>We opened our new store in Amsterdam.</p>
+                        </div>
+                    </div>
+                    <div class="container left">
+                        <div class="content">
+                            <h2>2017</h2>
+                            <p>20% hike in our sales since last year.</p>
+                        </div>
+                    </div>
+                    <div class="container right">
+                        <div class="content">
+                            <h2>2016</h2>
+                            <p>We opened our first store in new york.</p>
+                        </div>
+                    </div>
+                
                 </div>
             </div>
         </div>
+
+        <hr>
+
+        <!-- Menu Section -->
+        <div class="w3-row w3-padding-64" id="menu">
+            <div class="w3-col l6 w3-padding-large">
+                <h1 class="w3-center">Our Menu</h1><br>
+                <h4>Bread Basket</h4>
+                <p class="w3-text-grey">Assortment of fresh baked fruit breads and muffins 5.50</p><br>
+
+                <h4>Honey Almond Granola with Fruits</h4>
+                <p class="w3-text-grey">Natural cereal of honey toasted oats, raisins, almonds and dates 7.00</p><br>
+
+                <h4>Belgian Waffle</h4>
+                <p class="w3-text-grey">Vanilla flavored batter with malted flour 7.50</p><br>
+
+                <h4>Scrambled eggs</h4>
+                <p class="w3-text-grey">Scrambled eggs, roasted red pepper and garlic, with green onions 7.50</p><br>
+
+                <h4>Blueberry Pancakes</h4>
+                <p class="w3-text-grey">With syrup, butter and lots of berries 8.50</p>
+            </div>
+
+            <div class="w3-col l6 w3-padding-large">
+                <img src="Pictures/Menu.png" class="w3-round w3-image w3-opacity-min" alt="Menu"
+                    style="width:100%">
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- Contact Section -->
+        <div class="w3-container w3-padding-64" id="contact">
+            <h1>Contact</h1><br>
+            <p>We offer full-service catering for any event, large or small. We understand your needs and we will cater
+                the food to satisfy the biggerst criteria of them all, both look and taste. Do not hesitate to contact
+                us.</p>
+            <p class="w3-text-blue-grey w3-large"><b>Catering Service, 42nd Living St, 43043 New York, NY</b></p>
+            <p>You can also contact us by phone 00553123-2323 or email catering@catering.com, or you can send us a
+                message here:</p>
+            <form action="/action_page.php" target="_blank">
+                <p><input class="w3-input w3-padding-16" type="text" placeholder="Name" required name="Name"></p>
+                <p><input class="w3-input w3-padding-16" type="number" placeholder="How many people" required
+                        name="People"></p>
+                <p><input class="w3-input w3-padding-16" type="datetime-local" placeholder="Date and time" required
+                        name="date" value="2020-11-16T20:00"></p>
+                <p><input class="w3-input w3-padding-16" type="text" placeholder="Message \ Special requirements"
+                        required name="Message"></p>
+                <p><button class="w3-button w3-light-grey w3-section" type="submit">SEND MESSAGE</button></p>
+            </form>
+        </div>
+
+        <!-- End page content -->
     </div>
-</div><!---Wrapper ends-->
-<footer>
-    <p><img src="Pictures/Footer.jpg" width="100px" height="100px">For any more queries contact:<br>
-        Author: Ladly Rout<br>
-        <a href="mailto:krout229.kr@gmail.com">krout229.kr@gmail.com</a>
-    </p>
 
-</footer>
-<script>
-    var slideIndex = 0;
-    showSlides();
-
-    function showSlides() {
-        var i;
-        var slides = document.getElementsByClassName("mySlides");
-        var dots = document.getElementsByClassName("dot");
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-        slideIndex++;
-        if (slideIndex > slides.length) { slideIndex = 1 }
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-        }
-        slides[slideIndex - 1].style.display = "block";
-        dots[slideIndex - 1].className += " active";
-        setTimeout(showSlides, 2000); // Change image every 2 seconds
-    }
-</script>
+    <!-- Footer -->
+    <footer class="w3-center w3-content-left w3-light-grey w3-padding-32">
+    <i class="fas fa-home"></i> <p>Editor : Ladly Rout</p>
+    <p><a href="#"><i class="fab fa-facebook"></i></a>  <a href="#"> <i class="fab fa-instagram"></i></a> <a herf=""><i class="fab fa-twitter"></i></a></p>
+    </footer>
     <script>
-        $(".slider").owlCarousel({
-            loop: true,
-            autoplay: true,
-            autoplayTimeout: 2000, //2000ms = 2s;
-            autoplayHoverPause: true,
-        });
+        var slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1 }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+            setTimeout(showSlides, 5000); // Change image every 5 seconds
+        }
     </script>
 </body>
+
 </html>
